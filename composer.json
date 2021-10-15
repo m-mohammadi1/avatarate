@@ -1,0 +1,18 @@
+{
+    "name": "luckyboy1001/avatarate",
+    "require": {
+        "intervention/image": "^2.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Avatarate\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Avatarate\\AvatarateServiceProvider"
+            ]
+        }
+    }
+}
