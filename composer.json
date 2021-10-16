@@ -3,6 +3,7 @@
     "type": "library",
     "description": "Package built for create avatars from text(username, ...)",
     "homepage": "https://github.com/luckyboy1001",
+    "license": "MIT",
     "require": {
         "php": ">=7.4",
         "intervention/image": "^2.6"
