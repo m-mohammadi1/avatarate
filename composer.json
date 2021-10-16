@@ -6,7 +6,14 @@
     "autoload": {
         "psr-4": {
             "Avatarate\\": "src/"
-        }
+        },
+        "classmap": [
+            "src/Services",
+            "src/Helpers/helpers.php"
+        ],
+        "files": [
+            "src/Helpers/helpers.php"
+        ]
     },
     "extra": {
         "laravel": {
