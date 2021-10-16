@@ -2,6 +2,7 @@
 
 namespace Avatarate\Services;
 
+use Exception;
 use Illuminate\Support\Arr;
 
 class ColorSelector
@@ -266,24 +267,80 @@ class ColorSelector
     ];
 
     /**
-     * rgba random
      * @return array
      */
-    public static function select()
+    public static function select(): array
     {
         return [rand(0, 255), rand(0, 255), rand(0, 255), 1];
     }
 
+    /**
+     * @throws Exception
+     */
     public static function check($color)
     {
         if (is_string($color)) {
             return preg_match(self::colorPattern, $color);
         }
 
-        if (is_array($color) && array_count_values($color) == 3 || array_count_values($color) == 4) {
+
+        if (is_array($color)) {
+
+            self::validateColorArray(count($color), $color);
+
             return true;
         }
 
         return false;
+    }
+
+    /**
+     * @param int $count
+     * @param array $color
+     * @throws Exception
+     */
+    private static function validateColorArray(int $count, array $color): void
+    {
+        if ($count != 3 && $count != 4) {
+            throw new Exception('Color provided must be in RBG or RGBA format');
+        }
+
+        self::validateRgb($color);
+        self::validateOpacity($color, $count);
+    }
+
+    /**
+     * @param array $color
+     * @throws Exception
+     */
+    private static function validateRgb(array $color): void
+    {
+        if ($color[0] > 255 || $color[0] < 0) {
+            throw new Exception('Color Provided Is Invalid');
+        }
+
+        if ($color[1] > 255 || $color[1] < 0) {
+            throw new Exception('Color Provided Is Invalid');
+        }
+
+        if ($color[2] > 255 || $color[2] < 0) {
+            throw new Exception('Color Provided Is Invalid');
+        }
+    }
+
+    /**
+     * @param $color
+     * @param $count
+     * @throws Exception
+     */
+    private static function validateOpacity($color, $count): void
+    {
+        if ($count < 4) {
+            return;
+        }
+
+        if ($color[3] > 1 || $color[3] < 0) {
+            throw new Exception('Color Opacity Is Invalid');
+        }
     }
 }
