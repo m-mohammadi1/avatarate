@@ -1,6 +1,10 @@
 {
     "name": "luckyboy1001/avatarate",
+    "type": "library",
+    "description": "Package built for create avatars from text(username, ...)",
+    "homepage": "https://github.com/luckyboy1001",
     "require": {
+        "php": ">=7.4",
         "intervention/image": "^2.6"
     },
     "autoload": {
