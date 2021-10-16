@@ -1,5 +1,10 @@
 # Make Profile Image From Name
 
+
+Demo Of Name Like This Mana Lovez :
+![demo](https://s20.picofile.com/file/8442359034/avatarate_1634403862.png)
+
+
 With this package you can easily generate profile photos in different formats (for now just png)
 
 ## installation

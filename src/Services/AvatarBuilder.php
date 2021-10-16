@@ -79,7 +79,7 @@ class AvatarBuilder
 
         return [
             'status' => 'success',
-            'file_name' => $canvas->filename,
+            'file_name' => $canvas->basename,
             'path' => $canvas->basePath(),
         ];
     }
